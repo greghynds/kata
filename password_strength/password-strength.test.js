@@ -2,7 +2,8 @@ const validate = require('./password-strength');
 
 test('password with less than 7 characters is invalid', () => {
     const password = "a1";
-    const result = validate(password);
+    const isAdmin = false;
+    const result = validate(password, isAdmin);
 
     expect(result.valid).toBe(false);
     expect(result.reasons).toContain("Minimum 7 characters");
@@ -34,7 +35,8 @@ test('admin password with less than 10 characters is invalid', () => {
 
 test('admin password with no special characters is invalid', () => {
     const password = "1bcdefghij";
-    const result = validate(password, true);
+    const isAdmin = true;
+    const result = validate(password, isAdmin);
 
     expect(result.valid).toBe(false);
     expect(result.reasons).toContain("Must include at least one special character (!@#$%^&*)");
