@@ -1,30 +1,23 @@
+
+const REQUIRED_CHARS_ERROR = "Must include at least one special character (!@#$%^&*)";
 const requiredCharsValidator = (password, isAdmin) => {
-    const valid = !isAdmin || /[!@#$%^&*]/.test(password);
-    const error = "Must include at least one special character (!@#$%^&*)";
-
-    return (valid ? undefined : error);
+    return (!isAdmin || /[!@#$%^&*]/.test(password) ? undefined : REQUIRED_CHARS_ERROR);
 };
 
+const INCLUDES_LETTERS_ERROR = "Must include at least one letter";
 const includesLettersValidator = (password) => {
-    const valid = /[a-zA-Z]/.test(password);
-    const error = "Must include at least one letter";
-
-    return (valid ? undefined : error);
+    return (/[a-zA-Z]/.test(password) ? undefined : INCLUDES_LETTERS_ERROR);
 };
 
+const INCLUDES_NUMBER_ERROR = "Must include at least one number";
 const includesNumberValidator = (password) => {
-    const valid = /[0-9]/.test(password);
-    const error = "Must include at least one number";
-
-    return (valid ? undefined : error);
+    return (/[0-9]/.test(password) ? undefined : INCLUDES_NUMBER_ERROR);
 }
 
+const minLengthError = (minLength) => "Minimum " + minLength + " characters";
 const minLengthValidator = (password, isAdmin) => {
     const minLength = (isAdmin ? 10 : 7);
-    const valid = password.length >= minLength;
-    const error = "Minimum " + minLength + " characters";
-
-    return (valid ? undefined : error);
+    return (password.length >= minLength ? undefined : minLengthError(minLength));
 };
 
 const validators = [
