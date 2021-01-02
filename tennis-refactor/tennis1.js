@@ -7,14 +7,10 @@ function getScore(player1Score, player2Score) {
     if (player1Score === player2Score) {
         return scoreForEqualPoints(player1Score);
     } else if (player1Score >= 4 || player2Score >= 4) {
-        var minusResult = player1Score - player2Score;
-        if (minusResult === 1) {score = "Advantage player1";}
-        else if (minusResult === -1) {score = "Advantage player2";}
-        else if (minusResult >= 2) {score = "Win for player1";}
-        else {score = "Win for player2";}
+        return scoreAbovePointsRange(player1Score, player2Score);
     } else {
         for (var i = 1; i < 3; i++) {
-            if (i === 1) {tempScore = player1Score;}
+            if (i === 1) { tempScore = player1Score; }
             else {
                 score += "-";
                 tempScore = player2Score;
@@ -48,6 +44,23 @@ const scoreForEqualPoints = (score) => {
             return "Thirty-All";
         default:
             return "Deuce";
+    }
+}
+
+const scoreAbovePointsRange = (player1Score, player2Score) => {
+    var minusResult = player1Score - player2Score;
+
+    if (minusResult === 1) {
+        return "Advantage player1";
+    }
+    else if (minusResult === -1) {
+        return "Advantage player2";
+    }
+    else if (minusResult >= 2) {
+        return "Win for player1";
+    }
+    else {
+        return "Win for player2";
     }
 }
 
