@@ -6,18 +6,11 @@ function getScore(player1Points, player2Points) {
     } else if (player1Points >= 4 || player2Points >= 4) {
         return scoreAbovePointsRange(player1Points, player2Points);
     } else {
-        return scoreForPoints(player1Points, player2Points);
+        return scoreForPoints(player1Points) + "-" + scoreForPoints(player2Points);
     }
 }
 
-const scoreForPoints = (player1Points, player2Points) => {
-    const player1Score = scoreForPlayer(player1Points);
-    const player2Score = scoreForPlayer(player2Points);
-
-    return player1Score + "-" + player2Score;
-}
-
-const scoreForPlayer = (score) => {
+const scoreForPoints = (score) => {
     return {
         0: "Love",
         1: "Fifteen",
@@ -30,7 +23,7 @@ const scoreForEqualPoints = (score) => {
     if (score >= 3) {
         return "Deuce";
     } else {
-        return scoreForPlayer(score) + "-All";
+        return scoreForPoints(score) + "-All";
     }
 }
 
