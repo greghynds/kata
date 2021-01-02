@@ -1,12 +1,12 @@
 'use strict';
 
-function getScore(player1Score, player2Score) {
-    if (player1Score === player2Score) {
-        return scoreForEqualPoints(player1Score);
-    } else if (player1Score >= 4 || player2Score >= 4) {
-        return scoreAbovePointsRange(player1Score, player2Score);
+function getScore(player1Points, player2Points) {
+    if (player1Points === player2Points) {
+        return scoreForEqualPoints(player1Points);
+    } else if (player1Points >= 4 || player2Points >= 4) {
+        return scoreAbovePointsRange(player1Points, player2Points);
     } else {
-        return scoreForPoints(player1Score, player2Score);
+        return scoreForPoints(player1Points, player2Points);
     }
 }
 
