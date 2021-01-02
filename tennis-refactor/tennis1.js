@@ -24,21 +24,9 @@ const scoreForPoints = (score) => {
 }
 
 const scoreAbovePointsRange = (player1Score, player2Score) => {
-    var minusResult = player1Score - player2Score;
-    const abs = Math.abs(minusResult);
-
-    if (minusResult === 1) {
-        return "Advantage player1";
-    }
-    else if (minusResult === -1) {
-        return "Advantage player2";
-    }
-    else if (minusResult >= 2) {
-        return "Win for player1";
-    }
-    else {
-        return "Win for player2";
-    }
+    const win = Math.abs(player1Score - player2Score) >= 2;
+    const leader = (player1Score > player2Score ? "player1" : "player2");
+    return (win ? "Win for " + leader : "Advantage " + leader);
 }
 
 module.exports = getScore;
