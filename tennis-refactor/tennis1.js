@@ -18,28 +18,19 @@ const scoreForPoints = (player1Points, player2Points) => {
 }
 
 const scoreForPlayer = (score) => {
-    switch (score) {
-        case 0:
-            return "Love";
-        case 1:
-            return "Fifteen";
-        case 2:
-            return "Thirty";
-        case 3:
-            return "Forty";
-    }
+    return {
+        0: "Love",
+        1: "Fifteen",
+        2: "Thirty",
+        3: "Forty"
+    }[score];
 }
 
 const scoreForEqualPoints = (score) => {
-    switch (score) {
-        case 0:
-            return "Love-All";
-        case 1:
-            return "Fifteen-All";
-        case 2:
-            return "Thirty-All";
-        default:
-            return "Deuce";
+    if (score >= 3) {
+        return "Deuce";
+    } else {
+        return scoreForPlayer(score) + "-All";
     }
 }
 
