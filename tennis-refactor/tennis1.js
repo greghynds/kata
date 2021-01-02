@@ -10,36 +10,24 @@ function getScore(player1Score, player2Score) {
     }
 }
 
-const scoreForPoints = (player1Score, player2Score) => {
-    var score = "";
-    var tempScore = 0;
-    
-    for (var i = 1; i < 3; i++) {
-        if (i === 1) {
-            tempScore = player1Score;
-        }
-        else {
-            score += "-";
-            tempScore = player2Score;
-        }
+const scoreForPoints = (player1Points, player2Points) => {
+    const player1Score = scoreForPlayer(player1Points);
+    const player2Score = scoreForPlayer(player2Points);
 
-        switch (tempScore) {
-            case 0:
-                score += "Love";
-                break;
-            case 1:
-                score += "Fifteen";
-                break;
-            case 2:
-                score += "Thirty";
-                break;
-            case 3:
-                score += "Forty";
-                break;
-        }
+    return player1Score + "-" + player2Score;
+}
+
+const scoreForPlayer = (score) => {
+    switch (score) {
+        case 0:
+            return "Love";
+        case 1:
+            return "Fifteen";
+        case 2:
+            return "Thirty";
+        case 3:
+            return "Forty";
     }
-
-    return score;
 }
 
 const scoreForEqualPoints = (score) => {
