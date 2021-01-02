@@ -3,21 +3,9 @@
 function getScore(player1Score, player2Score) {
     var score = "";
     var tempScore = 0;
+
     if (player1Score === player2Score) {
-        switch (player1Score) {
-            case 0:
-                score = "Love-All";
-                break;
-            case 1:
-                score = "Fifteen-All";
-                break;
-            case 2:
-                score = "Thirty-All";
-                break;
-            default:
-                score = "Deuce";
-                break;
-        }
+        return scoreForEqualPoints(player1Score);
     } else if (player1Score >= 4 || player2Score >= 4) {
         var minusResult = player1Score - player2Score;
         if (minusResult === 1) {score = "Advantage player1";}
@@ -48,6 +36,19 @@ function getScore(player1Score, player2Score) {
         }
     }
     return score;
+}
+
+const scoreForEqualPoints = (score) => {
+    switch (score) {
+        case 0:
+            return "Love-All";
+        case 1:
+            return "Fifteen-All";
+        case 2:
+            return "Thirty-All";
+        default:
+            return "Deuce";
+    }
 }
 
 module.exports = getScore;
