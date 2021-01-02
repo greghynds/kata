@@ -1,12 +1,8 @@
 'use strict';
 
-function getScore(player1Points, player2Points) {
+const getScore = (player1Points, player2Points) => {
     if (player1Points === player2Points) {
-        if (player1Points >= 3) {
-            return "Deuce";
-        } else {
-            return scoreForPoints(player1Points) + "-All";
-        }
+        return scoreForEqualPoints(player1Points);
     } else if (player1Points >= 4 || player2Points >= 4) {
         return scoreAbovePointsRange(player1Points, player2Points);
     } else {
@@ -23,9 +19,14 @@ const scoreForPoints = (score) => {
     }[score];
 }
 
+const scoreForEqualPoints = (score) => {
+    return (score >= 3 ? "Deuce" : scoreForPoints(score) + "-All");
+}
+
 const scoreAbovePointsRange = (player1Score, player2Score) => {
     const win = Math.abs(player1Score - player2Score) >= 2;
     const leader = (player1Score > player2Score ? "player1" : "player2");
+
     return (win ? "Win for " + leader : "Advantage " + leader);
 }
 
