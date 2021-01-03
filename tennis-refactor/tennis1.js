@@ -1,33 +1,31 @@
 'use strict';
 
 const getScore = (player1Points, player2Points) => {
-    if (player1Points === player2Points) {
-        return scoreForEqualPoints(player1Points);
-    } else if (player1Points >= 4 || player2Points >= 4) {
-        return scoreAbovePointsRange(player1Points, player2Points);
-    } else {
-        return scoreForPoints(player1Points) + "-" + scoreForPoints(player2Points);
-    }
-}
-
-const scoreForPoints = (score) => {
-    return {
+    const scoring = {
         0: "Love",
         1: "Fifteen",
         2: "Thirty",
         3: "Forty"
-    }[score];
+    };
+
+    const isEqualScore = player1Points === player2Points;
+    const isDeuce = isEqualScore && player1Points > 2;
+    const isScoreAboveForty = player1Points > 3 || player2Points > 3
+    const pointsDelta = Math.abs(player1Points - player2Points);
+    const isAdvantagePoint = isScoreAboveForty && pointsDelta == 1;
+    const isGamePoint = isScoreAboveForty && pointsDelta >= 2;
+
+    if (isDeuce) {
+        return "Deuce";
+    } else if (isEqualScore) {
+        return `${scoring[player1Points]}-All`;
+    } else if (isAdvantagePoint || isGamePoint) {
+        const leader = (player1Points > player2Points ? "player1" : "player2");
+        return (isAdvantagePoint ? `Advantage ${leader}` : `Win for ${leader}`);
+    } else {
+        return `${scoring[player1Points]}-${scoring[player2Points]}`;
+    }
 }
 
-const scoreForEqualPoints = (score) => {
-    return (score >= 3 ? "Deuce" : scoreForPoints(score) + "-All");
-}
-
-const scoreAbovePointsRange = (player1Score, player2Score) => {
-    const win = Math.abs(player1Score - player2Score) >= 2;
-    const leader = (player1Score > player2Score ? "player1" : "player2");
-
-    return (win ? "Win for " + leader : "Advantage " + leader);
-}
 
 module.exports = getScore;
