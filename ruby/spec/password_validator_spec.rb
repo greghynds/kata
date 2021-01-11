@@ -31,4 +31,15 @@ RSpec.describe PasswordValidator do
         expect(result[:valid]).to eq false
         expect(result[:errors]).to include("Must include at least one number")
     end
+    it 'admin password with less than 10 characters is invalid' do
+        password = "1!cdefg"
+        admin = true
+        sut = PasswordValidator.new
+
+        result = sut.validate(password, admin)
+
+        expect(result[:valid]).to eq false
+        expect(result[:errors]).to include("Minimum 10 characters")
+    end
+    
 end
