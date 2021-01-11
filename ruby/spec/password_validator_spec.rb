@@ -89,4 +89,31 @@ RSpec.describe PasswordValidator do
 
         expect(result[:errors]).to match_array(errors)
     end
+    it 'password with numbers and only upper case letters is valid' do
+        password = "123ABCD"
+        admin = false
+        sut = PasswordValidator.new
+
+        result = sut.validate(password, admin)
+
+        expect(result[:valid]).to eq true
+    end
+    it 'password with numbers and only upper case letters is valid' do
+        password = "123abcd"
+        admin = false
+        sut = PasswordValidator.new
+
+        result = sut.validate(password, admin)
+
+        expect(result[:valid]).to eq true
+    end
+    it 'admin password with all requirements is valid' do
+        password = "!1cdefghij"
+        admin = true
+        sut = PasswordValidator.new
+
+        result = sut.validate(password, admin)
+
+        expect(result[:valid]).to eq true
+    end
 end
