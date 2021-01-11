@@ -1,10 +1,10 @@
-class PasswordValidator
-    def initialize(conditions)
-        @conditions = [IncludesLetters.new]
-    end
+require 'includes_letters'
+require 'minimum_length'
 
-    def self.with(conditions) 
-        new(conditions)
+
+class PasswordValidator
+    def initialize
+        @conditions = [IncludesLetters.new, MinimumLength.new]
     end
 
     def validate(password, admin)
