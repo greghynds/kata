@@ -60,4 +60,33 @@ RSpec.describe PasswordValidator do
 
         expect(result[:valid]).to eq true
     end
+    it 'empty password returns all invalid reasons' do
+        password = ""
+        admin = false
+        sut = PasswordValidator.new
+        errors = [
+            "Minimum 7 characters",
+            "Must include at least one letter",
+            "Must include at least one number"
+        ]
+
+        result = sut.validate(password, admin)
+
+        expect(result[:errors]).to match_array(errors)
+    end
+    it 'empty admin password returns all invalid reasons' do
+        password = ""
+        admin = true
+        sut = PasswordValidator.new
+        errors = [
+            "Minimum 10 characters",
+            "Must include at least one letter",
+            "Must include at least one number",
+            "Must include at least one special character (!@#$%^&*)"
+        ]
+
+        result = sut.validate(password, admin)
+
+        expect(result[:errors]).to match_array(errors)
+    end
 end
