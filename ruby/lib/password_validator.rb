@@ -1,10 +1,14 @@
 require 'includes_letters'
+require 'includes_numbers'
 require 'minimum_length'
-
 
 class PasswordValidator
     def initialize
-        @conditions = [IncludesLetters.new, MinimumLength.new]
+        @conditions = [
+            IncludesLetters.new, 
+            IncludesNumbers.new, 
+            MinimumLength.new
+        ]
     end
 
     def validate(password, admin)

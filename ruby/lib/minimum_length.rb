@@ -1,6 +1,5 @@
 require 'password_condition'
 
-
 class MinimumLength < PasswordCondition
     def check(password, admin)
         minLength = admin ? 10 : 7

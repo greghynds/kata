@@ -1,6 +1,5 @@
 require 'password_validator'
 
-
 RSpec.describe PasswordValidator do
     it 'password with less than 7 characters is invalid' do
         password = "a1"
@@ -22,4 +21,14 @@ RSpec.describe PasswordValidator do
         expect(result[:valid]).to eq false
         expect(result[:errors]).to include("Must include at least one letter")
     end
-end 
+    it 'password with no numbers is invalid' do
+        password = "abcdefg"
+        admin = false
+        sut = PasswordValidator.new
+
+        result = sut.validate(password, admin)
+
+        expect(result[:valid]).to eq false
+        expect(result[:errors]).to include("Must include at least one number")
+    end
+end
