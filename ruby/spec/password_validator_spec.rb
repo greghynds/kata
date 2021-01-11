@@ -51,4 +51,13 @@ RSpec.describe PasswordValidator do
         expect(result[:valid]).to eq false
         expect(result[:errors]).to include("Must include at least one special character (!@#$%^&*)")
     end
+    it 'password with all requirements is valid' do
+        password = "123ABcd"
+        admin = false
+        sut = PasswordValidator.new
+
+        result = sut.validate(password, admin)
+
+        expect(result[:valid]).to eq true
+    end
 end

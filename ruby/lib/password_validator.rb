@@ -16,8 +16,8 @@ class PasswordValidator
     def validate(password, admin)
         errors = @conditions
             .map { |condition| condition.check(password, admin) }
-            .filter { |result| result != nil}
+            .filter { |error| !error.nil? }
 
-        { valid: !errors.length, errors: errors }
+        { valid: errors.empty?, errors: errors }
     end
 end
