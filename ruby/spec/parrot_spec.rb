@@ -1,4 +1,4 @@
-require 'parrot'
+require 'parrot_factory'
 
 describe "Parrots" do
   it "gets speed of a European parrot" do

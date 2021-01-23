@@ -1,5 +1,7 @@
-class EuropeanParrot
+require 'parrot'
+
+class EuropeanParrot < Parrot
     def speed
-        12.0
+        base_speed
     end
 end
