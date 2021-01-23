@@ -1,6 +1,6 @@
 require 'parrot'
 
-class NorwegianParrot < Parrot
+class NorwegianBlueParrot < Parrot
 
     def initialize(voltage)
         @voltage = voltage

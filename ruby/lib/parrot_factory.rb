@@ -1,5 +1,5 @@
 require 'european_parrot'
-require 'norwegian_parrot'
+require 'norwegian_blue_parrot'
 require 'african_parrot'
 require 'nailed_parrot'
 
@@ -12,7 +12,7 @@ class ParrotFactory
       when :african_parrot
         AfricanParrot.new(number_of_coconuts)
       when :norwegian_blue_parrot
-        (nailed) ?  NailedParrot.new : NorwegianParrot.new(voltage)
+        (nailed) ?  NailedParrot.new : NorwegianBlueParrot.new(voltage)
       end
     end
   
