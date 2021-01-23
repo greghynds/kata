@@ -1,6 +1,6 @@
 require 'password_validator'
 
-RSpec.describe PasswordValidator do
+describe PasswordValidator do
     it 'returns an error for passwords with less than 7 characters' do
         password = "a1"
         admin = false
@@ -115,15 +115,5 @@ RSpec.describe PasswordValidator do
         result = sut.validate(password, admin)
 
         expect(result[:valid]).to eq true
-    end
-end
-
-RSpec.describe Post do
-    it 'prints comments' do
-        sut = Post.new(["first comment", "second comment"])
-
-        sut.printComments
-
-        expect(false).to eq false
     end
 end
