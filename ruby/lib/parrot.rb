@@ -1,5 +1,3 @@
 class Parrot
-    def base_speed
-        12.0
-    end
+    BASE_SPEED = 12.0
 end

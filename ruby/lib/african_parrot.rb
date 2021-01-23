@@ -6,10 +6,10 @@ class AfricanParrot < Parrot
     end
 
     def speed
-        [0, base_speed - load_factor * @number_of_coconuts].max
+        [0, BASE_SPEED - LOAD_FACTOR * @number_of_coconuts].max
     end
 
-    def load_factor
-        9.0
-      end
+    private
+
+    LOAD_FACTOR = 9.0
 end

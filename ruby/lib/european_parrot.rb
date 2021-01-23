@@ -2,6 +2,6 @@ require 'parrot'
 
 class EuropeanParrot < Parrot
     def speed
-        base_speed
+        BASE_SPEED
     end
 end
