@@ -1,4 +1,6 @@
-class Parrot
+require 'european_parrot'
+
+class ParrotFactory
 
     def initialize type, number_of_coconuts, voltage, nailed
       @type = type
@@ -10,7 +12,7 @@ class Parrot
     def speed
       case @type
       when :european_parrot
-        return base_speed
+        return EuropeanParrot.new.speed
       when :african_parrot
         return [0, base_speed - load_factor * @number_of_coconuts].max
       when :norwegian_blue_parrot
