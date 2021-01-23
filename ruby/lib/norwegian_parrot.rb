@@ -7,13 +7,9 @@ class NorwegianParrot < Parrot
     end 
 
     def speed
-        speed_for_voltage(@voltage)
+        [MIN_SPEED, @voltage * BASE_SPEED].min
     end
 
-    def speed_for_voltage voltage
-        [MIN_SPEED, voltage * BASE_SPEED].min
-    end
-    
     private 
 
     MIN_SPEED = 24.0
