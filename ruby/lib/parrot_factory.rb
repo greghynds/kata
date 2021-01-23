@@ -5,7 +5,7 @@ require 'nailed_parrot'
 
 class ParrotFactory
 
-    def initialize(type, number_of_coconuts, voltage, nailed)
+    def initialize(type, number_of_coconuts: 0, voltage: 0.0, nailed: false)
       @parrot = case type
       when :european_parrot
         EuropeanParrot.new
