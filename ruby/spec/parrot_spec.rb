@@ -35,4 +35,9 @@ describe "ParrotFactory" do
     parrot = ParrotFactory.new(:norwegian_blue_parrot, voltage: 4)
     expect(parrot.speed).to eq(24.0)
   end
+
+  it "returns speed of zero for unknown types of parrot" do
+    parrot = ParrotFactory.new(:unknown_parrot)
+    expect(parrot.speed).to eq(0.0)
+  end
 end

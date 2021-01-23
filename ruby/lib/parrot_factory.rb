@@ -13,6 +13,8 @@ class ParrotFactory
         AfricanParrot.new(number_of_coconuts)
       when :norwegian_blue_parrot
         (nailed) ?  NailedParrot.new : NorwegianBlueParrot.new(voltage)
+      else 
+        NailedParrot.new
       end
     end
   
