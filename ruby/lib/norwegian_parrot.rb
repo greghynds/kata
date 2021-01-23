@@ -2,13 +2,12 @@ require 'parrot'
 
 class NorwegianParrot < Parrot
 
-    def initialize voltage, nailed
+    def initialize voltage
         @voltage = voltage
-        @nailed = nailed
-    end
+    end 
 
     def speed
-        (@nailed) ? 0 : speed_for_voltage(@voltage)
+        speed_for_voltage(@voltage)
     end
 
     def speed_for_voltage voltage

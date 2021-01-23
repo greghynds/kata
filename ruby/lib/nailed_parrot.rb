@@ -1,6 +1,6 @@
 require 'parrot'
 
-class DeadParrot < Parrot
+class NailedParrot < Parrot
     def speed
         0
     end
