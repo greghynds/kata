@@ -1,7 +1,7 @@
 require 'parrot'
 
 class AfricanParrot < Parrot
-    def initialize number_of_coconuts
+    def initialize(number_of_coconuts)
         @number_of_coconuts = number_of_coconuts
     end
 

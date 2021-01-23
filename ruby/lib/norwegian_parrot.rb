@@ -2,7 +2,7 @@ require 'parrot'
 
 class NorwegianParrot < Parrot
 
-    def initialize voltage
+    def initialize(voltage)
         @voltage = voltage
     end 
 
