@@ -1,6 +1,7 @@
 require 'ticket_sequence'
-require 'ticket'
   
+Ticket = Struct.new(:number)
+
 class TicketDispenser
     def initialize(sequence) 
         @sequence = sequence
