@@ -8,23 +8,12 @@ require 'dummy_pressure'
 # providing random but realistic values.
 
 describe "Alarm" do
-  it "is off by default" do
-    source = DummyPressureSource.new(0)
-    sensor = Sensor.new(source)
-    sut = Alarm.new(sensor)
-    expected = false
-    
-    actual = sut.is_alarm_on
-
-    expect(actual).to eq(expected)
-  end
   it "is on when pressure is lower than bottom threshold" do
     source = DummyPressureSource.new(0)
     sensor = Sensor.new(source)
     sut = Alarm.new(sensor)
     expected = true
     
-    sut.check
     actual = sut.is_alarm_on
 
     expect(actual).to eq(expected)
@@ -35,7 +24,6 @@ describe "Alarm" do
     sut = Alarm.new(sensor)
     expected = true
     
-    sut.check
     actual = sut.is_alarm_on
 
     expect(actual).to eq(expected)
@@ -46,7 +34,6 @@ describe "Alarm" do
     sut = Alarm.new(sensor)
     expected = false
     
-    sut.check
     actual = sut.is_alarm_on
 
     expect(actual).to eq(expected)
