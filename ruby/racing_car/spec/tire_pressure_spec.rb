@@ -9,7 +9,9 @@ require 'dummy_pressure'
 
 describe "Alarm" do
   it "is off by default" do
-    sut = Alarm.new(Sensor.new)
+    source = DummyPressureSource.new(0)
+    sensor = Sensor.new(source)
+    sut = Alarm.new(sensor)
     expected = false
     
     actual = sut.is_alarm_on
@@ -18,7 +20,18 @@ describe "Alarm" do
   end
   it "is on when pressure is lower than bottom threshold" do
     source = DummyPressureSource.new(0)
-    sensor = Sensor.new(source: source)
+    sensor = Sensor.new(source)
+    sut = Alarm.new(sensor)
+    expected = true
+    
+    sut.check
+    actual = sut.is_alarm_on
+
+    expect(actual).to eq(expected)
+  end
+  it "is on when pressure is higher than top threshold" do
+    source = DummyPressureSource.new(25)
+    sensor = Sensor.new(source)
     sut = Alarm.new(sensor)
     expected = true
     

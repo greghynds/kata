@@ -1,7 +1,6 @@
 require 'sensor'
 
 class Alarm
-  
     attr_reader :is_alarm_on
   
     def initialize(sensor)

@@ -3,7 +3,7 @@ require 'random_pressure'
 class Sensor
     OFFSET = 16
 
-    def initialize(source: RandomPressure.new)
+    def initialize(source)
         @source = source
     end
       
