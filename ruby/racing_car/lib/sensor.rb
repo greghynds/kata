@@ -8,15 +8,6 @@ class Sensor
     end
       
     def pop_next_pressure_psi_value
-        OFFSET + sample_pressure
-    end
-  
-    def sample_pressure
-        @source.sample_pressure
+        OFFSET + @source.sample_pressure
     end
 end
-
-
-
-
-  
