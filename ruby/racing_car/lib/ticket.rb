@@ -1,9 +1,9 @@
 class Ticket
-    def initialize turn_number
-        @turn_number = turn_number
+    def initialize(number)
+        @number = number
     end
 
     def number
-        @turn_number
+        @number
     end
 end

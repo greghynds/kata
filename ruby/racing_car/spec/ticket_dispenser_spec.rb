@@ -9,4 +9,15 @@ describe TicketDispenser do
 
     expect(actual).to eq(expected)
   end
+  it "dispenses next ticket with a higher turn number" do
+    expectedFirst = Ticket.new(0).number
+    expectedSecond = Ticket.new(1).number
+    sut = TicketDispenser.new(TicketSequence.new)
+    
+    first = sut.dispense.number
+    second = sut.dispense.number
+
+    expect(first).to eq(expectedFirst)
+    expect(second).to eq(expectedSecond)
+  end
 end
