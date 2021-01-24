@@ -1,6 +1,6 @@
 require 'password_validator'
 
-RSpec.describe PasswordValidator do
+describe PasswordValidator do
     it 'returns an error for passwords with less than 7 characters' do
         password = "a1"
         admin = false
