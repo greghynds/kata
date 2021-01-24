@@ -11,7 +11,7 @@ class Alarm
     end
         
     def check
-        psi_pressure_value = @sensor.pop_next_pressure_psi_value()
+        psi_pressure_value = @sensor.pressure_psi
       
         if psi_pressure_value < @low_pressure_threshold or @high_pressure_threshold < psi_pressure_value
             @is_alarm_on = true
