@@ -1,28 +1,12 @@
-class TurnTicket
-    def initialize turn_number
-        @turn_number = turn_number
-    end
-
-    def number
-        @turn_number
-    end
-end
-  
-class TurnNumberSequence
-    @@turn_number = -1
-
-    def self.next_turn_number
-        @@turn_number += 1
-
-        @@turn_number
-    end
-end
+require 'ticket_sequence'
+require 'ticket'
   
 class TicketDispenser
-    def next
-        new_turn_number = TurnNumberSequence.next_turn_number
-        new_turn_ticket = TurnTicket.new(new_turn_number)
+    def initialize(sequence) 
+        @sequence = sequence
+    end
 
-        new_turn_ticket
+    def dispense
+        Ticket.new(@sequence.next)
     end
 end
