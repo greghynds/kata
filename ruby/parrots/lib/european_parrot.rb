@@ -1,6 +1,8 @@
-require 'parrot'
+require 'parrot_speed'
 
-class EuropeanParrot < Parrot
+class EuropeanParrot
+    include ParrotSpeed
+
     def speed
         BASE_SPEED
     end

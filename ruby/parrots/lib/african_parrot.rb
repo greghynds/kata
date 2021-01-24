@@ -1,6 +1,8 @@
-require 'parrot'
+require 'parrot_speed'
 
-class AfricanParrot < Parrot
+class AfricanParrot
+    include ParrotSpeed
+
     def initialize(number_of_coconuts)
         @number_of_coconuts = number_of_coconuts
     end

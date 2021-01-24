@@ -1,6 +1,7 @@
-require 'parrot'
+require 'parrot_speed'
 
-class NorwegianBlueParrot < Parrot
+class NorwegianBlueParrot
+    include ParrotSpeed
 
     def initialize(voltage)
         @voltage = voltage
