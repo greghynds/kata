@@ -14,10 +14,6 @@ class Alarm
     end
         
     def check
-        psi_pressure_value = @sensor.pressure_psi
-      
-        if psi_pressure_value < MIN_PRESSURE or MAX_PRESSURE < psi_pressure_value
-            @is_alarm_on = true
-        end
+        @is_alarm_on = !@sensor.pressure_psi.between?(MIN_PRESSURE, MAX_PRESSURE)
     end
 end
