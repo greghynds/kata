@@ -40,4 +40,15 @@ describe "Alarm" do
 
     expect(actual).to eq(expected)
   end
+  it "is off when pressure is within target range" do
+    source = DummyPressureSource.new(3)
+    sensor = Sensor.new(source)
+    sut = Alarm.new(sensor)
+    expected = false
+    
+    sut.check
+    actual = sut.is_alarm_on
+
+    expect(actual).to eq(expected)
+  end
 end
