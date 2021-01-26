@@ -1,5 +1,6 @@
 class Diamond
-    LETTERS = ['A', 'B', 'C', 'D', 'E', 'F']
+    LETTERS = "ABCDEFGHIJKLMNOPQRSTUVXYZ"
+    private_constant :LETTERS
 
     def self.for(letter)
         total_rows = total_rows(letter)
@@ -29,11 +30,7 @@ class Diamond
     end
 
     def self.total_rows(letter)
-        numbers = []
-        LETTERS.each_with_index do |x, i|
-            numbers.push( (i*2) + 1)
-        end
-
+        numbers = LETTERS.split('').each_with_index.map{ |x, i| (i * 2) + 1 }
         total_rows = numbers[LETTERS.index(letter)]
     end
 end
