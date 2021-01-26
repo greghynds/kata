@@ -4,17 +4,14 @@ class Diamond
 
     def self.for(letter)
         total_rows = total_rows(letter)
-        
         lines = []
         middle = (total_rows - 1) / 2
+        top = middle.downto(0).map { |n| n }
+        bottom = top.take(middle).reverse
+        indices = top + bottom
 
-        middle.downto(0).each do |i| 
-            line = self.generate_row(LETTERS[middle - i], total_rows, i)
-            lines.push(line)
-        end
-
-        (middle - 1).downto(0).each do |i| 
-            lines.push(lines[i])
+        indices.each do |i|
+            lines.push(self.generate_row(LETTERS[middle - i], total_rows, i))
         end
 
         lines
