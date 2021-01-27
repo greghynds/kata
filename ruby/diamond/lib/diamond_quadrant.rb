@@ -5,6 +5,7 @@ class DiamondQuadrant
     def self.for(letter, position = :top_right)
         case position
         when :top_right then top_right(letter)
+        when :top_left then top_left(letter)
         else top_right(letter)
         end
     end
@@ -17,6 +18,13 @@ class DiamondQuadrant
             row[i] = l
             row
         end
+    end
+
+    def self.top_left(letter)
+        tr = top_right(letter).map do |x|
+            x.reverse
+        end
+
     end
 
     def self.dots(length)
