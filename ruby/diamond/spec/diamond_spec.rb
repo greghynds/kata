@@ -33,4 +33,12 @@ describe Diamond do
     expect(actual).to eq(expected)
     puts actual
   end
+  it "uses given filler character" do
+    expected = ['*A*', 'B*B', '*A*']
+    
+    actual = Diamond.for('B', "*")
+
+    expect(actual).to eq(expected)
+    puts actual
+  end
 end

@@ -11,7 +11,9 @@ class DiamondQuadrant
     LETTERS = "ABCDEFGHIJKLMNOPQRSTUVXYZ".split('')
     private_constant :LETTERS
 
-    def self.for(letter, position = :top_right)
+    def self.for(letter, position, filler = '.')
+        @filler = filler
+
         case position
         when :top_right then top_right(letter)
         when :top_left then top_left(letter)
@@ -24,9 +26,9 @@ class DiamondQuadrant
     def self.top_right(letter)
         total_rows = LETTERS.index(letter) + 1
         total_rows.times.each_with_index.map do |i|
-            l = LETTERS[i]
+            letter_for_row = LETTERS[i]
             row = dots(total_rows)
-            row[i] = l
+            row[i] = letter_for_row
             row
         end
     end
@@ -44,6 +46,6 @@ class DiamondQuadrant
     end
 
     def self.dots(length)
-        "".rjust(length, ".")
+        "".rjust(length, @filler)
     end 
 end

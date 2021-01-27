@@ -1,11 +1,11 @@
 require 'diamond_quadrant'
 
 class Diamond
-    def self.for(letter)
-        top_right = DiamondQuadrant.for(letter, :top_right)
-        top_left = DiamondQuadrant.for(letter, :top_left)
-        bottom_right = DiamondQuadrant.for(letter, :bottom_right)
-        bottom_left = DiamondQuadrant.for(letter, :bottom_left)
+    def self.for(letter, filler = '.')
+        top_right = DiamondQuadrant.for(letter, :top_right, filler)
+        top_left = DiamondQuadrant.for(letter, :top_left, filler)
+        bottom_right = DiamondQuadrant.for(letter, :bottom_right, filler)
+        bottom_left = DiamondQuadrant.for(letter, :bottom_left, filler)
 
         top_row = join_horizontal(top_left, top_right)
         bottom_row = join_horizontal(bottom_left, bottom_right)
