@@ -1,42 +1,25 @@
+require 'diamond_quadrant'
+
 class Diamond
-    LETTERS = "ABCDEFGHIJKLMNOPQRSTUVXYZ"
-    private_constant :LETTERS
+    def self.for(letter, filler = '.')
+        top_right = DiamondQuadrant.for(letter, :top_right, filler)
+        top_left = DiamondQuadrant.for(letter, :top_left, filler)
+        bottom_right = DiamondQuadrant.for(letter, :bottom_right, filler)
+        bottom_left = DiamondQuadrant.for(letter, :bottom_left, filler)
 
-    def self.for(letter)
-        total_rows = total_rows(letter)
-        middle = calculate_middle(total_rows)
-        indices = indices(middle)
+        top_row = join_horizontal(top_left, top_right)
+        bottom_row = join_horizontal(bottom_left, bottom_right)
+        
+        join_vertical(top_row, bottom_row)
+    end
 
-        indices.map do |i|
-            self.generate_row(LETTERS[middle - i], total_rows, i)
+    def self.join_horizontal(left, right)
+        left.each_with_index.map do |row, i|
+            row[0, row.length - 1] + right[i]
         end
     end
 
-    private
-
-    def self.generate_row(letter, total_rows, distance_from_middle) 
-        row = empty_row(total_rows)
-        row[distance_from_middle] = letter
-        row[row.length - (1 + distance_from_middle)] = letter
-        row
+    def self.join_vertical(top, bottom)
+        top.take(top.length - 1) + bottom
     end
-
-    def self.indices(middle)
-        top = middle.downto(0).map { |n| n }
-        bottom = top.take(middle).reverse
-        top + bottom
-    end
-
-    def self.calculate_middle(total_rows)
-        (total_rows - 1) / 2
-    end
-
-    def self.total_rows(letter)
-        numbers = LETTERS.split('').each_with_index.map{ |x, i| (i * 2) + 1 }
-        total_rows = numbers[LETTERS.index(letter)]
-    end
-
-    def self.empty_row(length)
-        "".rjust(length, ".")
-    end 
 end
