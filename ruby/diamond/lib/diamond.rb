@@ -4,10 +4,11 @@ class Diamond
 
     def self.for(letter, filler = '.')
         quadrant = Quadrant.new(letter, filler)
-        top_row = join_horizontal(quadrant.for(:top_left), quadrant.for(:top_right))
-        bottom_row = join_horizontal(quadrant.for(:bottom_left), quadrant.for(:bottom_right))
         
-        join_vertical(top_row, bottom_row)
+        join_vertical(
+            join_horizontal(quadrant.for(:top_left), quadrant.for(:top_right)),
+            join_horizontal(quadrant.for(:bottom_left), quadrant.for(:bottom_right))
+        )
     end
 
     private
@@ -22,7 +23,7 @@ class Diamond
 
 
     class Quadrant
-        
+
         def initialize(letter, filler)
             @letter = letter
             @filler = filler
