@@ -38,6 +38,8 @@ class Diamond
             end
         end
     
+        private
+
         def top_right(letter)
             total_rows = LETTERS.index(letter) + 1
             total_rows.times.each_with_index.map do |i|
