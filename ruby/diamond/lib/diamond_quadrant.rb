@@ -4,16 +4,12 @@ class DiamondQuadrant
 
     def self.for(letter)
         total_rows = LETTERS.index(letter) + 1
-        rows = []
-
-        total_rows.times.each_with_index do |i|
+        total_rows.times.each_with_index.map do |i|
             l = LETTERS[i]
             row = dots(total_rows)
             row[i] = l
-            rows.push(row)
+            row
         end
-
-        rows
     end
 
     def self.dots(length)
