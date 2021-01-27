@@ -7,7 +7,7 @@ class DiamondQuadrant
         @filler = filler
     end
 
-    def row(position)
+    def for(position)
         case position
         when :top_right then top_right(@letter)
         when :top_left then top_left(@letter)
