@@ -36,4 +36,7 @@ describe Diamond do
 
     expect(actual).to eq(expected)
   end
+  it "prints" do
+    puts Diamond.for('K', ' ')
+  end
 end
