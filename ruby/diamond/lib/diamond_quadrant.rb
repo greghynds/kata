@@ -1,12 +1,12 @@
 class DiamondQuadrant
-    LETTERS = "ABCDEFGHIJKLMNOPQRSTUVXYZ"
+    LETTERS = "ABCDEFGHIJKLMNOPQRSTUVXYZ".split('')
     private_constant :LETTERS
 
     def self.for(letter)
-        total_rows = LETTERS.split('').index(letter) + 1
+        total_rows = LETTERS.index(letter) + 1
         rows = []
         total_rows.times do
-            rows.push(".")
+            rows.push("".rjust(total_rows, "."))
         end
         rows
     end
