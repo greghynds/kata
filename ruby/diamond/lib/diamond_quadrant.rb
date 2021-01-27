@@ -1,4 +1,13 @@
 class DiamondQuadrant
+
+    # ..A | A..
+    # .B. | .B.
+    # C.. | ..C
+    # ---------
+    # C.. | ..C
+    # .B. | .B.
+    # ..A | A..
+
     LETTERS = "ABCDEFGHIJKLMNOPQRSTUVXYZ".split('')
     private_constant :LETTERS
 
