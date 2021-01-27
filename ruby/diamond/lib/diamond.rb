@@ -3,11 +3,12 @@ class Diamond
     private_constant :LETTERS
 
     def self.for(letter, filler = '.')
-        quadrant = Quadrant.new(letter, filler)
+        @letter = letter
+        @filler = filler
         
         join_vertical(
-            join_horizontal(quadrant.for(:top_left), quadrant.for(:top_right)),
-            join_horizontal(quadrant.for(:bottom_left), quadrant.for(:bottom_right))
+            join_horizontal(quadrant_for(:top_left), quadrant_for(:top_right)),
+            join_horizontal(quadrant_for(:bottom_left), quadrant_for(:bottom_right))
         )
     end
 
@@ -21,33 +22,22 @@ class Diamond
         top.take(top.length - 1) + bottom
     end
 
-
-    class Quadrant
-
-        def initialize(letter, filler)
-            @letter = letter
-            @filler = filler
+    def self.quadrant_for(position)
+        case position
+        when :top_right then top_right(@letter)
+        when :top_left then top_right(@letter).map{ |x| x.reverse }
+        when :bottom_right then top_right(@letter).reverse
+        when :bottom_left then top_right(@letter).map{ |x| x.reverse }.reverse
         end
-    
-        def for(position)
-            case position
-            when :top_right then top_right(@letter)
-            when :top_left then top_right(@letter).map{ |x| x.reverse }
-            when :bottom_right then top_right(@letter).reverse
-            when :bottom_left then top_right(@letter).map{ |x| x.reverse }.reverse
-            end
-        end
-    
-        private
+    end
 
-        def top_right(letter)
-            total_rows = LETTERS.index(letter) + 1
-            total_rows.times.each_with_index.map do |i|
-                letter_for_row = LETTERS[i]
-                row = "".rjust(total_rows, @filler)
-                row[i] = letter_for_row
-                row
-            end
+    def self.top_right(letter)
+        total_rows = LETTERS.index(letter) + 1
+        total_rows.times.each_with_index.map do |i|
+            letter_for_row = LETTERS[i]
+            row = "".rjust(total_rows, @filler)
+            row[i] = letter_for_row
+            row
         end
     end
 end
