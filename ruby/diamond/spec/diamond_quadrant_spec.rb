@@ -38,4 +38,23 @@ describe DiamondQuadrant do
 
     expect(actual).to eq(expected)
   end
+
+  it "returns bottom right quadrant for A" do
+    expected = ['A']
+    actual = DiamondQuadrant.for('A', :bottom_right)
+
+    expect(actual).to eq(expected)
+  end
+  it "returns bottom right quadrant for B" do
+    expected = ['.B', 'A.']
+    actual = DiamondQuadrant.for('B', :bottom_right)
+
+    expect(actual).to eq(expected)
+  end
+  it "returns bottom right quadrant for C" do
+    expected = ['..C', '.B.', 'A..']
+    actual = DiamondQuadrant.for('C', :bottom_right)
+
+    expect(actual).to eq(expected)
+  end
 end
