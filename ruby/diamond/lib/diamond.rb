@@ -13,6 +13,8 @@ class Diamond
         join_vertical(top_row, bottom_row)
     end
 
+    private
+
     def self.join_horizontal(left, right)
         left.each_with_index.map do |row, i|
             row[0, row.length - 1] + right[i]
