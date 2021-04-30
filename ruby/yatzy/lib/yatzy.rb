@@ -86,22 +86,25 @@ class Yatzy
       @dice[4] = d5
     end
   
-    def fours
-      roll(4)
+    def self.fours(d1, d2, d3, d4, d5)
+      rolls = [d1, d2, d3, d4, d5]
+      roll(rolls, 4)
     end
   
-    def fives()
-      roll(5)
+    def self.fives(d1, d2, d3, d4, d5)
+      rolls = [d1, d2, d3, d4, d5]
+      roll(rolls, 5)
     end
   
-    def sixes
-      roll(6)
+    def self.sixes(d1, d2, d3, d4, d5)
+      rolls = [d1, d2, d3, d4, d5]
+      roll(rolls, 6)
     end
 
-    def roll(category)
+    def self.roll(rolls, category)
       sum = 0
-      for i in 0..@dice.length
-        if (@dice[i] == category)
+      for i in 0..rolls.size
+        if (rolls[i] == category)
           sum += category
         end
       end

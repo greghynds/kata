@@ -38,21 +38,21 @@ describe "Yatzy" do
     end
 
     it "fours" do
-        expect(12).to eq(Yatzy.new(4,4,4,5,5).fours)
-        expect(8).to eq(Yatzy.new(4,4,5,5,5).fours)
-        expect(4).to eq(Yatzy.new(4,5,5,5,5).fours)
+        expect(12).to eq(Yatzy.fours(4,4,4,5,5))
+        expect(8).to eq(Yatzy.fours(4,4,5,5,5))
+        expect(4).to eq(Yatzy.fours(4,5,5,5,5))
     end
 
     it "fives" do
-        expect(10).to eq(Yatzy.new(4,4,4,5,5).fives())
-        expect(15).to eq(Yatzy.new(4,4,5,5,5).fives())
-        expect(20).to eq(Yatzy.new(4,5,5,5,5).fives())
+        expect(10).to eq(Yatzy.fives(4,4,4,5,5))
+        expect(15).to eq(Yatzy.fives(4,4,5,5,5))
+        expect(20).to eq(Yatzy.fives(4,5,5,5,5))
     end
 
     it "sixes" do
-        expect(0).to eq(Yatzy.new(4,4,4,5,5).sixes())
-        expect(6).to eq(Yatzy.new(4,4,6,5,5).sixes())
-        expect(18).to eq(Yatzy.new(6,5,6,6,5).sixes())
+        expect(0).to eq(Yatzy.sixes(4,4,4,5,5))
+        expect(6).to eq(Yatzy.sixes(4,4,6,5,5))
+        expect(18).to eq(Yatzy.sixes(6,5,6,6,5))
     end
 
     it "one pair" do
