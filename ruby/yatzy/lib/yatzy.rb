@@ -16,89 +16,28 @@ class Yatzy
       return 0
     end
   
-    def self.ones( d1,  d2,  d3,  d4,  d5)
-      sum = 0
-      if (d1 == 1)
-        sum += 1
-      end
-      if (d2 == 1)
-        sum += 1
-      end
-      if (d3 == 1)
-        sum += 1
-      end
-      if (d4 == 1)
-        sum += 1
-      end
-      if (d5 == 1)
-        sum += 1
-      end
-  
-      sum
+    def self.ones(die1, die2, die3, die4, die5)
+      roll([die1, die2, die3, die4, die5], 1)
     end
   
-    def self.twos( d1,  d2,  d3,  d4,  d5)
-      sum = 0
-      if (d1 == 2)
-        sum += 2
-      end
-      if (d2 == 2)
-        sum += 2
-      end
-      if (d3 == 2)
-        sum += 2
-      end
-      if (d4 == 2)
-        sum += 2
-      end
-      if (d5 == 2)
-        sum += 2
-      end
-      return sum
+    def self.twos(die1, die2, die3, die4, die5)
+      roll([die1, die2, die3, die4, die5], 2)
     end
   
-    def self.threes( d1,  d2,  d3,  d4,  d5)
-      s = 0
-      if (d1 == 3)
-        s += 3
-      end
-      if (d2 == 3)
-        s += 3
-      end
-      if (d3 == 3)
-        s += 3
-      end
-      if (d4 == 3)
-        s += 3
-      end
-      if (d5 == 3)
-        s += 3
-      end
-      return s
+    def self.threes(die1, die2, die3, die4, die5)
+      roll([die1, die2, die3, die4, die5], 3)
     end
   
-    def initialize(d1, d2, d3, d4, d5)
-      @dice = [0]*5
-      @dice[0] = d1
-      @dice[1] = d2
-      @dice[2] = d3
-      @dice[3] = d4
-      @dice[4] = d5
+    def self.fours(die1, die2, die3, die4, die5)
+      roll([die1, die2, die3, die4, die5], 4)
     end
   
-    def self.fours(d1, d2, d3, d4, d5)
-      rolls = [d1, d2, d3, d4, d5]
-      roll(rolls, 4)
+    def self.fives(die1, die2, die3, die4, die5)
+      roll([die1, die2, die3, die4, die5], 5)
     end
   
-    def self.fives(d1, d2, d3, d4, d5)
-      rolls = [d1, d2, d3, d4, d5]
-      roll(rolls, 5)
-    end
-  
-    def self.sixes(d1, d2, d3, d4, d5)
-      rolls = [d1, d2, d3, d4, d5]
-      roll(rolls, 6)
+    def self.sixes(die1, die2, die3, die4, die5)
+      roll([die1, die2, die3, die4, die5], 6)
     end
 
     def self.roll(rolls, category)
@@ -179,7 +118,7 @@ class Yatzy
       0
     end
   
-    def self.smallStraight( d1,  d2,  d3,  d4,  d5)
+    def self.smallStraight(d1, d2, d3, d4, d5)
       tallies = [0]*6
       tallies[d1-1] += 1
       tallies[d2-1] += 1
@@ -193,7 +132,7 @@ class Yatzy
         tallies[4] == 1) ? 15 : 0
     end
   
-    def self.largeStraight( d1,  d2,  d3,  d4,  d5)
+    def self.largeStraight(d1, d2, d3, d4, d5)
       tallies = [0]*6
       tallies[d1-1] += 1
       tallies[d2-1] += 1
