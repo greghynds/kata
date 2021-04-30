@@ -87,34 +87,25 @@ class Yatzy
     end
   
     def fours
-      sum = 0
-      for at in Array 0..4
-        if (@dice[at] == 4)
-          sum += 4
-        end
-      end
-      return sum
+      roll(4)
     end
   
     def fives()
-      s = 0
-      i = 0
-      for i in (Range.new(0, @dice.size))
-        if (@dice[i] == 5)
-          s = s + 5
-        end
-      end
-      s
+      roll(5)
     end
   
     def sixes
+      roll(6)
+    end
+
+    def roll(category)
       sum = 0
-      for at in 0..@dice.length
-        if (@dice[at] == 6)
-          sum = sum + 6
+      for i in 0..@dice.length
+        if (@dice[i] == category)
+          sum += category
         end
       end
-      return sum
+      sum
     end
   
     def self.score_pair( d1,  d2,  d3,  d4,  d5)
