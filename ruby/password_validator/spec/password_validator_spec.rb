@@ -1,77 +1,68 @@
 require 'password_validator'
 
 describe PasswordValidator do
-    it 'returns an error for passwords with less than 7 characters for regular users' do
-        password = "a1"
-        admin = :regular_user
-        sut = MinimumLength.new
-
-        result = sut.checkType(password, admin)
-
-        expect(result).to include("Minimum 7 characters")
-    end
     it 'returns an error for passwords with less than 7 characters' do
         password = "a1"
-        admin = false
+        userType = :regular_user
         sut = PasswordValidator.new
 
-        result = sut.validate(password, admin)
+        result = sut.validate(password, userType)
 
         expect(result[:valid]).to eq false
         expect(result[:errors]).to include("Minimum 7 characters")
     end
     it 'returns an error for passwords which don\'t include letters' do
         password = "12345678"
-        admin = false
+        userType = :regular_user
         sut = PasswordValidator.new
 
-        result = sut.validate(password, admin)
+        result = sut.validate(password, userType)
 
         expect(result[:valid]).to eq false
         expect(result[:errors]).to include("Must include at least one letter")
     end
     it 'returns an error for passwords which don\'t include numbers' do
         password = "abcdefg"
-        admin = false
+        userType = :regular_user
         sut = PasswordValidator.new
 
-        result = sut.validate(password, admin)
+        result = sut.validate(password, userType)
 
         expect(result[:valid]).to eq false
         expect(result[:errors]).to include("Must include at least one number")
     end
     it 'returns an error for admin passwords with less than 10 characters' do
         password = "1!cdefg"
-        admin = true
+        userType = :admin_user
         sut = PasswordValidator.new
 
-        result = sut.validate(password, admin)
+        result = sut.validate(password, userType)
 
         expect(result[:valid]).to eq false
         expect(result[:errors]).to include("Minimum 10 characters")
     end
     it 'returns an error for admin passwords which don\'t include special characters' do
         password = "1bcdefghij"
-        admin = true
+        userType = :admin_user
         sut = PasswordValidator.new
 
-        result = sut.validate(password, admin)
+        result = sut.validate(password, userType)
 
         expect(result[:valid]).to eq false
         expect(result[:errors]).to include("Must include at least one special character (!@#$%^&*)")
     end
     it 'validates passwords which satisfy all requirements' do
         password = "123ABcd"
-        admin = false
+        userType = :regular_user
         sut = PasswordValidator.new
 
-        result = sut.validate(password, admin)
+        result = sut.validate(password, userType)
 
         expect(result[:valid]).to eq true
     end
     it 'returns multiple errors for empty passwords' do
         password = ""
-        admin = false
+        userType = :regular_user
         sut = PasswordValidator.new
         errors = [
             "Minimum 7 characters",
@@ -79,13 +70,13 @@ describe PasswordValidator do
             "Must include at least one number"
         ]
 
-        result = sut.validate(password, admin)
+        result = sut.validate(password, userType)
 
         expect(result[:errors]).to match_array(errors)
     end
     it 'returns multiple errors for empty admin passwords' do
         password = ""
-        admin = true
+        userType = :admin_user
         sut = PasswordValidator.new
         errors = [
             "Minimum 10 characters",
@@ -94,34 +85,34 @@ describe PasswordValidator do
             "Must include at least one special character (!@#$%^&*)"
         ]
 
-        result = sut.validate(password, admin)
+        result = sut.validate(password, userType)
 
         expect(result[:errors]).to match_array(errors)
     end
     it 'validates passwords with all upper case letters' do
         password = "123ABCD"
-        admin = false
+        userType = :regular_user
         sut = PasswordValidator.new
 
-        result = sut.validate(password, admin)
+        result = sut.validate(password, userType)
 
         expect(result[:valid]).to eq true
     end
     it 'validates password with all lower case letters' do
         password = "123abcd"
-        admin = false
+        userType = :regular_user
         sut = PasswordValidator.new
 
-        result = sut.validate(password, admin)
+        result = sut.validate(password, userType)
 
         expect(result[:valid]).to eq true
     end
     it 'validates admin passwords which satisfy all requirements' do
         password = "!1cdefghij"
-        admin = true
+        userType = :admin_user
         sut = PasswordValidator.new
 
-        result = sut.validate(password, admin)
+        result = sut.validate(password, userType)
 
         expect(result[:valid]).to eq true
     end
