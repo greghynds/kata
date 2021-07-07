@@ -1,6 +1,15 @@
 require 'password_validator'
 
 describe PasswordValidator do
+    it 'returns an error for passwords with less than 7 characters for regular users' do
+        password = "a1"
+        admin = :regular_user
+        sut = MinimumLength.new
+
+        result = sut.checkType(password, admin)
+
+        expect(result).to include("Minimum 7 characters")
+    end
     it 'returns an error for passwords with less than 7 characters' do
         password = "a1"
         admin = false
